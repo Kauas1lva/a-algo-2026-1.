@@ -1,1 +1,45 @@
+import time
+import sys
 
+# constante com valores de teste
+VALORES_TESTE = [10, 100, 500, 1000]
+
+# aumenta limite de recursão
+sys.setrecursionlimit(2000)
+
+
+def fatorial(n):
+    """
+    Calcula o fatorial de um número usando recursão.
+
+    O algoritmo funciona chamando a função novamente
+    com n - 1 até chegar ao caso base (n == 0 ou n == 1).
+
+    Parâmetros:
+        n (int): número inteiro.
+
+    Retorna:
+        int: resultado do fatorial.
+    """
+
+    if n == 0 or n == 1:
+        return 1
+
+    return n * fatorial(n - 1)
+
+
+for n in VALORES_TESTE:
+
+    inicio = time.time() 
+
+    resultado = fatorial(n)
+
+    fim = time.time()
+
+    tempo_execucao = fim - inicio
+
+    print("n =", n)
+    print("tempo:", tempo_execucao)
+    print("-" * 30)
+
+# O algoritmo possui complexidade linear O(n), pois o número de chamadas recursivas aumenta proporcionalmente ao valor de n.
