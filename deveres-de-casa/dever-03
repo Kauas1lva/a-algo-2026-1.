@@ -1,1 +1,68 @@
+import time
 
+# arrays para teste
+ARRAYS_TESTE = [
+    [0, 1, 2, 3, 2, 1, 0],
+    ["a", "b", "b", "a"],
+    ["a", "b", "c", "b", "a"],
+    ["a", "b", "c", "f", "b", "a"]
+]
+
+
+def eh_palindromo(array, inicio, fim):
+    """
+    Verifica se um array é palíndromo usando recursão.
+
+    O algoritmo compara o primeiro e o último elemento do array.
+    Se forem iguais, continua a verificação para o próximo par
+    (inicio + 1 e fim - 1), até chegar ao centro.
+
+    Complexidade:
+        Tempo: O(n)
+        Espaço: O(n) (devido à recursão)
+
+    Parâmetros:
+        array (list): lista de elementos
+        inicio (int): índice inicial
+        fim (int): índice final
+
+    Retorna:
+        bool: True se for palíndromo, False caso contrário
+    """
+
+    # caso base: quando os índices se cruzam ou são iguais
+    if inicio >= fim:
+        return True
+
+    # se os elementos forem diferentes, não é palíndromo
+    if array[inicio] != array[fim]:
+        return False
+
+    # chamada recursiva para o próximo par
+    return eh_palindromo(array, inicio + 1, fim - 1)
+
+
+# percorre os arrays para testar
+for array in ARRAYS_TESTE:
+
+    # marca o tempo inicial
+    inicio_tempo = time.time()
+
+    # chama a função passando início e fim do array
+    resultado = eh_palindromo(array, 0, len(array) - 1)
+
+    # marca o tempo final
+    fim_tempo = time.time()
+
+    tempo_execucao = fim_tempo - inicio_tempo
+
+    # exibe o resultado
+    print("Array:", array)
+
+    if resultado:
+        print("É palíndromo")
+    else:
+        print("Não é palíndromo")
+
+    print("Tempo:", tempo_execucao)
+    print("-" * 30)
