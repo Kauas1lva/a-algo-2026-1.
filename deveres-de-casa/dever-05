@@ -1,1 +1,33 @@
+def calcular_f(n):
+    """
+    Calcula o valor da função recursiva F(n).
 
+    A função é definida como:
+        F(n) = 2F(n-1) + n²
+        F(1) = 2
+
+    Complexidade:
+        Tempo: O(2^n) (exponencial)
+        Espaço: O(n)
+
+    Parâmetros:
+        n (int): valor inteiro positivo.
+
+    Retorna:
+        int: resultado da função F(n).
+    """
+
+    # caso base
+    if n == 1:
+        return 2
+
+    # chamada recursiva
+    return 2 * calcular_f(n - 1) + n ** 2
+
+
+# solicita valor ao usuário
+n = int(input("Digite um valor de n: "))
+
+resultado = calcular_f(n)
+
+print("Resultado:", resultado)
